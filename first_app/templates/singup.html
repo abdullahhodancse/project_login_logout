@@ -1,0 +1,33 @@
+ {% extends 'base.html'%}
+ {%load crispy_forms_tags%}
+
+ {%block body%}
+    {% if messages %}
+    {% for m in messages %}
+   
+       {{m}}
+     
+    {% endfor %}
+
+    {%endif%}
+   
+    <h1>Hello, world!</h1>
+    {% load crispy_forms_tags %}
+    
+     <form  method="post" style="width: 50%; margin: auto;"novalidate>
+        <h1>Singup page</h1>
+       {% csrf_token %}
+       <!-- {{form|crispy}} -->
+        {% for fm in form %}
+        
+          {{ fm.label_tag }}
+          {{ fm }}
+          {{ fm.errors|striptags }}
+        
+       {% endfor %} 
+     </br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </br>
+      <small> Already have an account <a href="{% url 'login'%}">Log In</a></small>
+    </form>
+{%endblock%}    
